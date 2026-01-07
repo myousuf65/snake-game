@@ -9,19 +9,23 @@
 </head>
 
 <body>
-
-
 	<div id="canvas">
 		<div id="1" class="row">
 			<div id="11" class="cell"></div>
 			<div id="12" class="cell"></div>
 			<div id="13" class="cell"></div>
+			<div id="14" class="cell"></div>
+			<div id="15" class="cell"></div>
+			<div id="16" class="cell"></div>
 
 		</div>
 		<div id="2" class="row">
 			<div id="21" class="cell"> </div>
 			<div id="22" class="cell"> </div>
 			<div id="23" class="cell"> </div>
+			<div id="24" class="cell"> </div>
+			<div id="25" class="cell"> </div>
+			<div id="26" class="cell"> </div>
 
 		</div>
 
@@ -29,177 +33,14 @@
 			<div id="31" class="cell"> </div>
 			<div id="32" class="cell"> </div>
 			<div id="33" class="cell"> </div>
+			<div id="34" class="cell"> </div>
+			<div id="35" class="cell"> </div>
+			<div id="36" class="cell"> </div>
 		</div>
-
 	</div>
 
 </body>
 
-<script>
-
-	// until get input from keybaord
-	// continue moving in direction
-	// set timeout to continue forward while listening
-	// to keys
-	// on keypress change direction
-
-	let allCells = document.querySelectorAll(".cell");
-	let activeCellId = Number(allCells[0].id);
-	let activeCell = allCells[0]
-	activeCell.classList.add("active")
-	let movementInterval = null;
-
-	let rightEnd = [14, 24, 34]
-	let leftEnd = [10, 20, 30]
-	let downEnd = [41, 42, 43]
-	let upEnd = [10, 11, 12]
-
-	function GoRight() {
-
-		if (movementInterval) {
-			clearInterval(movementInterval)
-		}
-
-		movementInterval = setInterval(() => {
-			activeCellId++
-
-			// remove old cell
-			activeCell.classList.remove("active")
-
-			// check if reached end of row
-			if (rightEnd.includes(activeCellId)) {
-				activeCellId = activeCellId - 3
-			} else {
-				// console.log("not end row")
-			}
-
-			// hightlight new cell
-			allCells.forEach((cell) => {
-				// console.log(cell.id, activeCellId, typeof(cell.id), typeof(activeCellId))
-				if (Number(cell.id) === Number(activeCellId)) {
-					cell.classList.add("active")
-					activeCell = cell
-				}
-			})
-		}, 1000)
-	}
-
-	function GoLeft() {
-		if (movementInterval) {
-			clearInterval(movementInterval)
-		}
-
-
-		movementInterval = setInterval(() => {
-			activeCellId--
-
-			// remove old cell
-			activeCell.classList.remove("active")
-
-			// check if reached end of row
-			if (leftEnd.includes(activeCellId)) {
-				activeCellId = activeCellId + 3
-			} else {
-				// console.log("not end row")
-			}
-
-			// hightlight new cell
-			allCells.forEach((cell) => {
-				// console.log(cell.id, activeCellId, typeof(cell.id), typeof(activeCellId))
-				if (Number(cell.id) === Number(activeCellId)) {
-					cell.classList.add("active")
-					activeCell = cell
-				}
-			})
-		}, 1000)
-	}
-
-	function GoUp() {
-
-		if (movementInterval) {
-			clearInterval(movementInterval)
-		}
-
-		movementInterval = setInterval(() => {
-			activeCellId -= 10
-
-			// remove old cell
-			activeCell.classList.remove("active")
-
-			// check if reached end of row
-			if (rightEnd.includes(activeCellId)) {
-				activeCellId = activeCellId + 30
-			} else {
-				// console.log("not end row")
-			}
-
-			// hightlight new cell
-			allCells.forEach((cell) => {
-				// console.log(cell.id, activeCellId, typeof(cell.id), typeof(activeCellId))
-				if (Number(cell.id) === Number(activeCellId)) {
-					cell.classList.add("active")
-					activeCell = cell
-				}
-			})
-		}, 1000)
-	}
-
-	function GoDown() {	
-		console.log("called")
-
-		if (movementInterval) {
-			clearInterval(movementInterval)
-		}
-
-		movementInterval = setInterval(() => {
-			activeCellId  = activeCellId + 10
-			console.log(activeCellId)
-
-			// remove old cell
-			activeCell.classList.remove("active")
-
-			// check if reached end of row
-			if (downEnd.includes(activeCellId)) {
-				activeCellId = activeCellId - 30
-			} else {
-				// console.log("not end row")
-			}
-
-			// hightlight new cell
-			allCells.forEach((cell) => {
-				// console.log(cell.id, activeCellId, typeof(cell.id), typeof(activeCellId))
-				if (Number(cell.id) === Number(activeCellId)) {
-					cell.classList.add("active")
-					activeCell = cell
-				}
-			})
-		}, 1000)
-	}
-
-
-
-	document.addEventListener("keyup", (e) => {
-		if (e.key === "ArrowUp") {
-			GoUp()
-		}
-
-
-		if (e.key === "ArrowDown") {
-			GoDown()
-		}
-
-
-		if (e.key === "ArrowLeft") {
-			GoLeft()
-		}
-
-
-		if (e.key === "ArrowRight") {
-			GoRight()
-		}
-
-	})
-
-</script>
+<script src="script.js"></script>
 
 </html>
